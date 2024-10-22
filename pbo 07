@@ -1,0 +1,113 @@
+class Nilai {
+    constructor(nilai) {
+        this.nilai = nilai;
+    }
+
+    hitungRataRata() {
+        if (!Array.isArray(this.nilai) || this.nilai.length === 0) {
+            throw new Error("Data nilai tidak valid atau kosong.");
+        }
+        const total = this.nilai.reduce((acc, curr) => acc + curr, 0);
+        return total / this.nilai.length;
+    }
+
+    hitungNilaiMaksimum() {
+        if (!Array.isArray(this.nilai) || this.nilai.length === 0) {
+            throw new Error("Data nilai tidak valid atau kosong.");
+        }
+        return Math.max(...this.nilai);
+    }
+
+    hitungNilaiMinimum() {
+        if (!Array.isArray(this.nilai) || this.nilai.length === 0) {
+            throw new Error("Data nilai tidak valid atau kosong.");
+        }
+        return Math.min(...this.nilai);
+    }
+}
+
+class NilaiView {
+    renderRataRata(rataRata) {
+        return Rata-rata nilai: ${rataRata};
+    }
+
+    renderMaksimum(nilaiMaksimum) {
+        return Nilai maksimum: ${nilaiMaksimum};
+    }
+
+    renderMinimum(nilaiMinimum) {
+        return Nilai minimum: ${nilaiMinimum};
+    }
+
+    renderError(error) {
+        return Error: ${error};
+    }
+}
+
+class NilaiController {
+    constructor(model, view) {
+        this.model = model;
+        this.view = view;
+    }
+
+    tampilkanRataRata(nilai) {
+        try {
+            const modelNilai = new this.model(nilai);
+            const rataRata = modelNilai.hitungRataRata();
+            console.log(this.view.renderRataRata(rataRata));  // Mengganti document.getElementById
+        } catch (error) {
+            console.log(this.view.renderError(error.message));  // Mengganti document.getElementById
+        }
+    }
+
+    tampilkanNilaiMaksimum(nilai) {
+        try {
+            const modelNilai = new this.model(nilai);
+            const nilaiMaksimum = modelNilai.hitungNilaiMaksimum();
+            console.log(this.view.renderMaksimum(nilaiMaksimum));  // Mengganti document.getElementById
+        } catch (error) {
+            console.log(this.view.renderError(error.message));  // Mengganti document.getElementById
+        }
+    }
+
+    tampilkanNilaiMinimum(nilai) {
+        try {
+            const modelNilai = new this.model(nilai);
+            const nilaiMinimum = modelNilai.hitungNilaiMinimum();
+            console.log(this.view.renderMinimum(nilaiMinimum));  // Mengganti document.getElementById
+        } catch (error) {
+            console.log(this.view.renderError(error.message));  // Mengganti document.getElementById
+        }
+    }
+}
+
+// Inisialisasi dan Penggunaan
+const nilaiController = new NilaiController(Nilai, new NilaiView());  // Menggunakan instance NilaiView
+
+// Contoh menampilkan rata-rata
+nilaiController.tampilkanRataRata([80, 90, 100]); // Output: Rata-rata nilai
+nilaiController.tampilkanNilaiMaksimum([80, 90, 100]); // Output: Nilai maksimum
+nilaiController.tampilkanNilaiMinimum([80, 90, 100]); // Output: Nilai minimum
+
+// Contoh menampilkan error
+nilaiController.tampilkanRataRata([]); // Output: Error: Data nilai tidak valid atau kosong.
+
+
+// Fungsi tambahan untuk operasi pembagian
+function bagi(a, b) {
+    try {
+        if (b === 0) {
+            throw new Error("Pembagian dengan nol tidak diperbolehkan.");
+        }
+        return a / b;
+    } catch (error) {
+        console.error("Terjadi error:", error.message);
+    } finally {
+        console.log("Operasi pembagian selesai.");
+    }
+}
+
+// Penggunaan fungsi bagi
+console.log(bagi(10, 2)); // Output: 5
+console.log(bagi(10, 0)); // Output: Terjadi error: Pembagian dengan nol tidak diperbolehkan.
+//                         //         Operasi pembagian selesai.
