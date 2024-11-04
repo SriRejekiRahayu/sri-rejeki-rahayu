@@ -1,0 +1,121 @@
+console.log("======================== Array CRUD ========================");
+
+let hoodieArray = [];
+
+function addHoodie(array, hoodie) {
+    array.push(hoodie);
+    console.log(`Hoodie "${hoodie}" ditambahkan ke Array.`);
+}
+
+function getHoodie(array, index) {
+    if (index >= 0 && index < array.length) {
+        return array[index];
+    } else {
+        return "Indeks di luar jangkauan.";
+    }
+}
+
+function updateHoodie(array, index, newHoodie) {
+    if (index >= 0 && index < array.length) {
+        array[index] = newHoodie;
+        console.log(`Hoodie di indeks ${index} diupdate menjadi "${newHoodie}".`);
+    } else {
+        console.log("Indeks di luar jangkauan.");
+    }
+}
+
+function deleteHoodie(array, index) {
+    if (index >= 0 && index < array.length) {
+        array.splice(index, 1);
+        console.log(`Hoodie di indeks ${index} dihapus dari Array.`);
+    } else {
+        console.log("Indeks di luar jangkauan.");
+    }
+}
+
+// Operasi pada Array
+console.log("Add Hoodie:");
+addHoodie(hoodieArray, "Hoodie Merah");
+console.log("Read Hoodie:");
+console.log(getHoodie(hoodieArray, 0)); 
+console.log("Update Hoodie:");
+updateHoodie(hoodieArray, 0, "Hoodie Biru");
+console.log("Delete Hoodie:");
+deleteHoodie(hoodieArray, 0);
+
+
+console.log("======================== Set CRUD ========================");
+
+let hoodieSet = new Set();
+
+function addHoodieToSet(set, hoodie) {
+    set.add(hoodie);
+    console.log(`Hoodie "${hoodie}" ditambahkan ke Set.`);
+}
+
+function hasHoodieInSet(set, hoodie) {
+    return set.has(hoodie);
+}
+
+function updateHoodieInSet(set, oldHoodie, newHoodie) {
+    if (set.has(oldHoodie)) {
+        set.delete(oldHoodie);
+        set.add(newHoodie);
+        console.log(`Hoodie "${oldHoodie}" diupdate menjadi "${newHoodie}" di Set.`);
+    } else {
+        console.log(`Hoodie "${oldHoodie}" tidak ditemukan di Set.`);
+    }
+}
+
+function deleteHoodieFromSet(set, hoodie) {
+    set.delete(hoodie);
+    console.log(`Hoodie "${hoodie}" dihapus dari Set.`);
+}
+
+// Operasi pada Set
+console.log("Add Hoodie to Set:");
+addHoodieToSet(hoodieSet, "Hoodie Hitam");
+console.log("Read Hoodie from Set:");
+console.log(hasHoodieInSet(hoodieSet, "Hoodie Hitam")); 
+console.log("Update Hoodie in Set:");
+updateHoodieInSet(hoodieSet, "Hoodie Hitam", "Hoodie Putih");
+console.log("Delete Hoodie from Set:");
+deleteHoodieFromSet(hoodieSet, "Hoodie Putih");
+
+
+console.log("======================== Map CRUD ========================");
+
+let hoodieMap = new Map();
+
+function addHoodieToMap(map, key, hoodie) {
+    map.set(key, hoodie);
+    console.log(`Pasangan ${key}: "${hoodie}" ditambahkan ke Map.`);
+}
+
+function getHoodieFromMap(map, key) {
+    return map.get(key) || "Key tidak ditemukan.";
+}
+
+function updateHoodieInMap(map, key, newHoodie) {
+    if (map.has(key)) {
+        map.set(key, newHoodie);
+        console.log(`Nilai untuk key ${key} diupdate menjadi "${newHoodie}" di Map.`);
+    } else {
+        console.log(`Key ${key} tidak ditemukan di Map.`);
+    }
+}
+
+function deleteHoodieFromMap(map, key) {
+    map.delete(key);
+    console.log(`Pasangan dengan key ${key} dihapus dari Map.`);
+}
+
+// Operasi pada Map
+console.log("Add Hoodie to Map:");
+addHoodieToMap(hoodieMap, "001", "Hoodie Abu-abu");
+console.log("Read Hoodie from Map:");
+console.log(getHoodieFromMap(hoodieMap, "001")); 
+console.log("Update Hoodie in Map:");
+updateHoodieInMap(hoodieMap, "001", "Hoodie Hijau");
+console.log("Delete Hoodie from Map:");
+deleteHoodieFromMap(hoodieMap, "001");
