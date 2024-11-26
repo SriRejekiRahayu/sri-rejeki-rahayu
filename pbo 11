@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contoh GUI dengan Tabel</title>
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+            font-family: Arial, sans-serif;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button onclick="tampilkanPesan()">Klik Saya</button>
+        <p id="pesan"></p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Nama</th>
+                  <th>keterangan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>zenab</td>
+                  <td>satu</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>susanto</td>
+                  <td>dua</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>abdul</td>
+                  <td>tiga</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function tampilkanPesan() {
+            document.getElementById('pesan').textContent = 'Halo, Anda telah mengklik tombol!';
+        }
+    </script>
+</body>
+</html>
